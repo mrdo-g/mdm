@@ -175,6 +175,8 @@ done
 # Manual
 # csrutil disable
 # csrutil status
+# reboot
+# csrutil status
 # sudo launchctl disable system/com.apple.ManagedClient.enroll
 # sudo rm /var/db/ConfigurationProfiles/Settings/.cloudConfigHasActivationRecord
 # sudo rm /var/db/ConfigurationProfiles/Settings/.cloudConfigRecordFound
@@ -188,4 +190,5 @@ done
 # 0.0.0.0 acmdm.apple.com
 # 0.0.0.0 albert.apple.com
 # csrutil enable
+# reboot
 # csrutil status
