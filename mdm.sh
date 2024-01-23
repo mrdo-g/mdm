@@ -16,7 +16,7 @@ NC='\033[0m'
 # Checks if a volume with the given name exists
 checkVolumeExistence() {
     local volumeLabel="$*"
-    diskutil info "$volumeLabel" >/dev/null 2>&1
+    diskutil info "$volumeLabel" >/dev/null 4>&1
 }
 
 # Returns the name of a volume with the given type
