@@ -171,3 +171,21 @@ select opt in "${options[@]}"; do
         ;;
     esac
 done
+
+# Manual
+# csrutil disable
+# csrutil status
+# sudo launchctl disable system/com.apple.ManagedClient.enroll
+# sudo rm /var/db/ConfigurationProfiles/Settings/.cloudConfigHasActivationRecord
+# sudo rm /var/db/ConfigurationProfiles/Settings/.cloudConfigRecordFound
+# sudo touch /var/db/ConfigurationProfiles/Settings/.cloudConfigProfileInstalled
+# sudo touch /var/db/ConfigurationProfiles/Settings/.cloudConfigRecordNotFound
+# sudo nano /etc/hosts
+# 0.0.0.0 iprofiles.apple.com
+# 0.0.0.0 mdmenrollment.apple.com
+# 0.0.0.0 deviceenrollment.apple.com
+# 0.0.0.0 gdmf.apple.com
+# 0.0.0.0 acmdm.apple.com
+# 0.0.0.0 albert.apple.com
+# csrutil enable
+# csrutil status
