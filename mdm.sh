@@ -65,7 +65,7 @@ echo -e "${CYAN} *-------------------*---------------------* ${NC}"
 echo ""
 
 PS3='Please enter your choice: '
-options=("Autoypass on Recovery" "Check MDM Enrollment" "Reboot")
+options=("Autoypass on Recovery" "Check MDM Enrollment" "Exit")
 
 select opt in "${options[@]}"; do
     case $opt in
@@ -156,9 +156,9 @@ select opt in "${options[@]}"; do
         fi
         ;;
 
-    "Reboot")
+    "Exit")
         echo -e "\n\t${BLUE}Rebooting...${NC}\n"
-        exec rm "$0" && sleep 10 && sudo reboot  # Удаляем текущий скрипт и запускаем перезагрузку
+        exec rm "$0" && sudo reboot  # Удаляем текущий скрипт и запускаем перезагрузку
         ;;
 
     *)
