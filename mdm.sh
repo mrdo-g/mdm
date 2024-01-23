@@ -2,7 +2,11 @@
 
 # Global constants
 readonly DEFAULT_SYSTEM_VOLUME="Macintosh HD"
-readonly DEFAULT_DATA_VOLUME="Data"
+if diskutil list | grep -q "Data"; then
+    readonly DEFAULT_DATA_VOLUME="Data"
+else
+    readonly DEFAULT_DATA_VOLUME="Macintosh HD - Data"
+fi
 
 # Text formating
 RED='\033[1;31m'
