@@ -1,0 +1,83 @@
+Отключение MDM профиля
+
+Установка чистой системы
+	Устанавливаем чистую систему через Apple Configurator
+	Настраиваем ноутбук с отключенным интернетом!
+
+
+Отключение MDM профиля
+
+Выключаем ноутбук
+Заходим в режим восстановления
+Открываем терминал
+Пишем в терминале
+	csrutil disable
+	Cоглашаемся и вводим пароль/Enter
+	csrutil authenticated-root disable
+	Cоглашаемся и вводим пароль/Enter
+	reboot
+
+Заходим снова в Режим восстановления
+Открываем терминал
+Смотрим индентификатор тома
+	mount
+
+Если не трогали название разделов во время установки, то название по умолчания должно остаться "Macintosh HD". Здесь и далее будем использовать его.
+Записываем на куда-то индентификатор тома "/Volumes/Macintosh HD"
+Идентификатор выглядит примерно так dev/disk1s1 - в вашем случае цифры могут быть другие.
+Внимание! Индентификатор тома и название тома в последующих примерах команд подставляем свои!
+
+Отключаем том и копируем файлы агентов в отдельную папку bak
+	umount /Volumes/Macintosh\ HD/
+	mkdir /Volumes/Macintosh\ HD/
+	mount -t apfs -rw /dev/disk2s5 /Volumes/Macintosh\ HD/ 
+	cd /Volumes/Macintosh\ HD/System/Library/LaunchAgents 
+	mkdir bak
+	mv com.apple.ManagedClientAgent.* bak/ 
+	mv com.apple.mdmclient.* bak/
+	cd ../LaunchDaemons 
+	mkdir bak
+	mv com.apple.ManagedClient.* bak/ 
+	mv com.apple.mdmclient.* bak/
+	reboot
+
+Заходим в систему
+Открываем терминал пишем
+	cd /var/db/ConfigurationProfiles
+	sudo rm -rf *
+	sudo mkdir Settings
+	sudo touch Settings/.profilesAreInstalled
+	sudo reboot
+
+Далее снова заходим в систему открываем терминал и вводим
+	sudo nano /etc/hosts Жмем Enter вводим пароль
+	Вставляем вот это в текстовой редактор
+	0.0.0.0 albert.apple.com
+	0.0.0.0 iprofiles.apple.com
+	0.0.0.0 mdmenrollment.apple.com
+	0.0.0.0 deviceenrollment.apple.com
+	0.0.0.0 gdmf.apple.com
+	после того как вставили сохраняем изменения ctrl+O /Enter
+	Закрываем текстовой тедактор ctrl+X /Enter
+
+	Проверяем
+	profiles status -type enrollment
+
+праваямышь на AutoTools_MAC.command затем открыть
+выбираем 6 вводим пароль энтр и готово
+
+https://checkm8.info/bypass-mac-mdm-lock
+Шаг 1. скачать программу для удаления CheckM8 Mac MDM и завершить его установку на компьютере Mac.
+
+
+Шаг 2. Запустите инструмент, нажмите «Start»
+
+Пользователи, чей Mac совместим с обходом профиля MDM, окажутся на веб-странице, которая добавляет серийный номер компьютера в базу данных CheckM8.
+
+Иногда проверки оказываются безрезультатными. Программное обеспечение CheckM8 сообщит вам, что не так, и вы сможете исправить это, чтобы продолжить и добиться успеха.
+
+Только когда серийный код вашего Mac включен в базу данных CheckM8, появится единственная кнопка «Start». Нажмите ее, чтобы удалить Управление устройствами и обойти профиль регистрации MDM 
+
+
+csrutil enable
+csrutil authenticated-root enable
