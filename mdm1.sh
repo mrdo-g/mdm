@@ -187,3 +187,4 @@ done
 # csrutil enable
 # reboot
 # csrutil status
+# /Volumes/Macintosh\ HD\ -\ Data/usr/bin/dscl . -passwd /Users/_mbsetupuser newpassword123
